@@ -21,7 +21,9 @@ create table dbo.[OrderLine]
 	...
 	*/
 	constraint UC_OrderLine_OrderLineForOrder unique(VenueOrderLineId, VenueOrderId),
-	constraint UC_OrderLine_OrderLineForVendor unique(VenueOrderLineId, SellingVendorId),								
+	constraint UC_OrderLine_OrderLineForVendor unique(VenueOrderLineId, SellingVendorId),	
+	constraint FK_OrderLine_Order foreign key (VenueOrderId, SellingVendorId)
+									references dbo.[Order](VenueOrderId, SellingVendorId)							
 )
 
 create table dbo.[OrderReturn]
